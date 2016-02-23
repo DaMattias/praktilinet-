@@ -9,6 +9,7 @@
   }
   </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML"></script>
 </head>
 <body>
   <div class="container">
@@ -24,26 +25,39 @@
       <div class="col-md-6">
         <table>
           <tr>
-            <th>Pos:</th>
+            <th>`x:`</th>
             <td id="value-x"></td>
           </tr>
           <tr>
-            <th>V:</th>
+            <th>`V:`</th>
             <td id="value-speed"></td>
           </tr>
           <tr>
-            <th>A:</th>
+            <th>`a:`</th>
             <td id="value-a"></td>
           </tr>
           <tr>
-            <th>Fres:</th>
+            <th>`F_(res):`</th>
             <td id="value-fres"></td>
           </tr>
           <tr>
-            <th>Fh:</th>
+            <th>`F_h:`</th>
             <td id="value-fh"></td>
           </tr>
         </table>
+      </div>
+    </div>
+    <br></br>
+    <div class="row">
+      <div class="col-md-6">
+        <p>`F_x=m*g*sin(alpha)`</p>
+        <p>`F_n=m*g*cos(alpha)`</p>
+        <p>`if v_0=0 rarr F_h=min(mu*F_n,F_x)`</p>
+        <p>`if v_0!=0 rarr F_h=sign(vi)*mu*F_n`</p>
+        <p>`F_(res)=F_x-F_h`</p>
+        <p>`a=F_(res)/m`</p>
+        <p>`v=v_0+a*t`</p>
+        <p>`x=v*t`</p>
       </div>
     </div>
   </div>
