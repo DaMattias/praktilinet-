@@ -152,8 +152,6 @@ var keha = new Keha(ctx, 80, 50);
 var kolmnurk = new Kolmnurk(ctx);
 keha.draw();
 
-var x2 = 0;
-
 var showInfo = function(ctx, block) {
   xValueElement.innerHTML = Math.round(keha.x);
   vValueElement.innerHTML = Math.round(keha.Speed);
@@ -166,23 +164,12 @@ var step = function(timeStamp) {
   ctx.clearRect(0, 0, width, height);
   kolmnurk.draw();
   var t = timeStamp / 1000;
-  if (x2<keha.x) {
-    //keha.Fh = keha.Fh*(-1)
-    console.log('tru')
-  }
   keha.calcPos(t);
   keha.draw();
   showInfo();
-  if (vi < 0) {
-    if (keha.x <= kolmnurk.a/Math.sin(angle)-keha.w*2) {
+  if (keha.x <= kolmnurk.a/Math.sin(angle)-keha.w*2) {
       window.requestAnimationFrame(step);
-    }
-  } else {
-    if (keha.x <= kolmnurk.a/Math.sin(angle)-keha.w*2 && x2 <= keha.x) {
-      window.requestAnimationFrame(step);
-    }
   }
-  x2 = keha.x;
 };
 
 window.requestAnimationFrame(step);
