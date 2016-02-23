@@ -19,9 +19,9 @@ var width = canvas.getAttribute('width'),
     height = canvas.getAttribute('height'),
     g = 9.807,
     mass = 2,
-    my = 0.7,
-    vi = -10,
-    angle = radians(28),
+    my = 0.2,
+    vi = 0,
+    angle = radians(22),
     pixelsByMeter=20;
 
 ctx.translate(0, height);
@@ -62,10 +62,23 @@ var Kolmnurk = function(ctx, fillStyle) {
 var Keha = function(ctx, w, h, fillStyle) {
   this.ctx = ctx;
 
+  /** Keha kõrgus */
   this.h = h;
+  /** Keha laius */
   this.w = w;
-
+  /** Keha positsioon x-teljel */
   this.x = 0;
+  /** Jõud, mis mõjub kehale x-telje suunas */
+  this.Fx = 0;
+  /** Toereaktsioon */
+  this.Fn = 0;
+  /** Hõõrdejõud */
+  this.Fh = 0;
+  /** Resultantjõud */
+  this.Fres = 0;
+  /** Keha kiirus */
+  this.Speed = 0;
+
 
   this.setX = function(x) {
     this.x = x;
