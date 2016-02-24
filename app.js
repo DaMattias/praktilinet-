@@ -67,17 +67,17 @@ var Keha = function(ctx, w, h, fillStyle) {
   /** Keha laius */
   this.w = w;
   /** Keha positsioon x-teljel */
-  this.x = 0;
+  this.x = null;
   /** Jõud, mis mõjub kehale x-telje suunas */
-  this.Fx = 0;
+  this.Fx = nul;
   /** Toereaktsioon */
-  this.Fn = 0;
+  this.Fn = null;
   /** Hõõrdejõud */
-  this.Fh = 0;
+  this.Fh = null;
   /** Resultantjõud */
-  this.Fres = 0;
+  this.Fres = null;
   /** Keha kiirus */
-  this.Speed = 0;
+  this.Speed = null;
 
 
   this.setX = function(x) {
