@@ -14,6 +14,7 @@ var vValueElement = document.getElementById('value-speed');
 var FresValueElement = document.getElementById('value-fres');
 var FhValueElement = document.getElementById('value-fh');
 var aValueElement = document.getElementById("value-a");
+var tValueElement = document.getElementById('value-t');
 
 var width = canvas.getAttribute('width'),
     height = canvas.getAttribute('height'),
@@ -69,7 +70,7 @@ var Keha = function(ctx, w, h, fillStyle) {
   /** Keha positsioon x-teljel */
   this.x = null;
   /** Jõud, mis mõjub kehale x-telje suunas */
-  this.Fx = nul;
+  this.Fx = null;
   /** Toereaktsioon */
   this.Fn = null;
   /** Hõõrdejõud */
@@ -178,7 +179,9 @@ var step = function(timeStamp) {
   kolmnurk.draw();
   var t = timeStamp / 1000;
   keha.calcPos(t);
+  tValueElement.innerHTML = Math.round(t);
   keha.draw();
+  tValueElement.innerHTML = parseFloat(t).toFixed(2);
   showInfo();
   if (keha.x <= kolmnurk.a/Math.sin(angle)-keha.w*2) {
       window.requestAnimationFrame(step);
