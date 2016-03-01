@@ -187,4 +187,6 @@ var step = function(timeStamp) {
   }
 };
 
-window.requestAnimationFrame(step);
+document.getElementById('magic').addEventListener('click', function(e) {
+      window.requestAnimationFrame(step);
+});
