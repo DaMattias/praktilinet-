@@ -18,11 +18,11 @@ var tValueElement = document.getElementById('value-t');
 
 var width = canvas.getAttribute('width'),
     height = canvas.getAttribute('height'),
-    g = 9.807,
-    mass = 2,
-    my = 0.2,
-    vi = 0,
-    angle = radians(22),
+    g = document.getElementById('g').value,
+    mass = document.getElementById('mass').value,
+    my = document.getElementById("my").value,
+    vi = document.getElementById("vi").value,
+    angle = radians(document.getElementById("angle").value),
     pixelsByMeter=20;
 
 ctx.translate(0, height);
@@ -179,7 +179,6 @@ var step = function(timeStamp) {
   kolmnurk.draw();
   var t = timeStamp / 1000;
   keha.calcPos(t);
-  tValueElement.innerHTML = Math.round(t);
   keha.draw();
   tValueElement.innerHTML = parseFloat(t).toFixed(2);
   showInfo();

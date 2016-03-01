@@ -14,15 +14,33 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <canvas id="canvas" width="800" height="600"></canvas>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
-        <button type="button" class="btn btn-default"><b>TEEME MAGICUT</b></button>
+      <div class="col-md-4">
+        <button id="magic" type="button" class="btn btn-default"><b>TEEME MAGICUT</b></button>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
+        <form>
+          <label for="g" >`g:`</label>
+          <input placeholder="Gravitatsioonilinekonstant" type="text" id="g" value="9.8">
+          <br>
+          <label for="mass">`m:`</label>
+          <input type="text" placeholder="Mass" id="mass" value="2">
+          <br>
+          <label for="my">`mu:`</label>
+          <input type="text" placeholder="Takistustegur" id="my" value="0.2">
+          <br>
+          <label for="vi">`v_0:`</label>
+          <input type="text" placeholder="Algkiirus" id="vi" value="0">
+          <br>
+          <label for="angle">`alpha:`</label>
+          <input type="text" placeholder="Nurk" id="angle" value="22">
+        </form>
+      </div>
+      <div class="col-md-4">
         <table>
           <tr>
             <th>`x:`</th>
