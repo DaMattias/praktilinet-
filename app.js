@@ -164,7 +164,6 @@ var Keha = function(ctx, w, h, fillStyle) {
 
 var keha = new Keha(ctx, 80, 50);
 var kolmnurk = new Kolmnurk(ctx);
-keha.draw();
 
 var showInfo = function(ctx, block) {
   xValueElement.innerHTML = Math.round(keha.x);
@@ -172,6 +171,16 @@ var showInfo = function(ctx, block) {
   aValueElement.innerHTML = Math.round(keha.a);
   FresValueElement.innerHTML = Math.round(keha.FRes);
   FhValueElement.innerHTML = Math.round(keha.Fh);
+};
+
+var update = function() {
+  width = canvas.getAttribute('width'),
+  height = canvas.getAttribute('height'),
+  g = document.getElementById('g').value,
+  mass = document.getElementById('mass').value,
+  my = document.getElementById("my").value,
+  vi = document.getElementById("vi").value,
+  angle = radians(document.getElementById("angle").value)
 }
 
 var step = function(timeStamp) {
@@ -187,6 +196,9 @@ var step = function(timeStamp) {
   }
 };
 
+
+
 document.getElementById('magic').addEventListener('click', function(e) {
-      window.requestAnimationFrame(step);
+  update();
+  window.requestAnimationFrame(step);
 });
