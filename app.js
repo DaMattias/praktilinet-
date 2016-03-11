@@ -23,6 +23,7 @@ var width = canvas.getAttribute('width'),
     my = document.getElementById("my").value,
     vi = document.getElementById("vi").value,
     angle = radians(document.getElementById("angle").value),
+    startTime = null,
     pixelsByMeter=20;
 
 ctx.translate(0, height);
@@ -166,7 +167,7 @@ var keha = new Keha(ctx, 80, 50);
 var kolmnurk = new Kolmnurk(ctx);
 
 var showInfo = function(ctx, block) {
-  xValueElement.innerHTML = Math.round(keha.x);
+  xValueElement.innerHTML = Math.round(keha.x)/pixelsByMeter;
   vValueElement.innerHTML = Math.round(keha.Speed);
   aValueElement.innerHTML = Math.round(keha.a);
   FresValueElement.innerHTML = Math.round(keha.FRes);
@@ -183,16 +184,22 @@ var update = function() {
   angle = radians(document.getElementById("angle").value)
 }
 
+
 var step = function(timeStamp) {
+  if (!startTime) {
+    startTime = timeStamp / 1000;
+  }
   ctx.clearRect(0, 0, width, height);
   kolmnurk.draw();
-  var t = timeStamp / 1000;
+  var t = timeStamp / 1000 -  startTime;
   keha.calcPos(t);
   keha.draw();
   tValueElement.innerHTML = parseFloat(t).toFixed(2);
   showInfo();
   if (keha.x <= kolmnurk.a/Math.sin(angle)-keha.w*2) {
       window.requestAnimationFrame(step);
+  } else {
+    startTime = null;
   }
 };
 
