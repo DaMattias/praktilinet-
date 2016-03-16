@@ -15,6 +15,9 @@ var FresValueElement = document.getElementById('value-fres');
 var FhValueElement = document.getElementById('value-fh');
 var aValueElement = document.getElementById("value-a");
 var tValueElement = document.getElementById('value-t');
+var frameId = null;
+var isRunning = false;
+var btnElement = document.getElementById("magic");
 
 var width = canvas.getAttribute('width'),
     height = canvas.getAttribute('height'),
@@ -169,7 +172,7 @@ var kolmnurk = new Kolmnurk(ctx);
 var showInfo = function(ctx, block) {
   xValueElement.innerHTML = Math.round(keha.x)/pixelsByMeter;
   vValueElement.innerHTML = Math.round(keha.Speed);
-  aValueElement.innerHTML = Math.round(keha.a);
+  aValueElement.innerHTML = Math.round(keha.a)/pixelsByMeter;
   FresValueElement.innerHTML = Math.round(keha.FRes);
   FhValueElement.innerHTML = Math.round(keha.Fh);
 };
@@ -177,11 +180,11 @@ var showInfo = function(ctx, block) {
 var update = function() {
   width = canvas.getAttribute('width'),
   height = canvas.getAttribute('height'),
-  g = document.getElementById('g').value,
-  mass = document.getElementById('mass').value,
-  my = document.getElementById("my").value,
-  vi = document.getElementById("vi").value,
-  angle = radians(document.getElementById("angle").value)
+  g = Number(document.getElementById('g').value),
+  mass = Number(document.getElementById('mass').value),
+  my = Number(document.getElementById("my").value),
+  vi = Number(document.getElementById("vi").value),
+  angle = radians(Number(document.getElementById("angle").value))
 }
 
 
@@ -196,16 +199,24 @@ var step = function(timeStamp) {
   keha.draw();
   tValueElement.innerHTML = parseFloat(t).toFixed(2);
   showInfo();
-  if (keha.x <= kolmnurk.a/Math.sin(angle)-keha.w*2) {
-      window.requestAnimationFrame(step);
+  if (keha.x <= kolmnurk.a/Math.sin(angle)-keha.w*2 && isRunning) {
+      frameId = window.requestAnimationFrame(step);
   } else {
     startTime = null;
+    btnElement.innerHTML = 'START';
+    isRunning = false;
   }
 };
 
 
-
 document.getElementById('magic').addEventListener('click', function(e) {
-  update();
-  window.requestAnimationFrame(step);
+  if (isRunning) {
+    isRunning = false;
+    btnElement.innerHTML = 'START';
+  } else {
+    update();
+    isRunning = true;
+    btnElement.innerHTML = 'STOP';
+    window.requestAnimationFrame(step);
+  }
 });
