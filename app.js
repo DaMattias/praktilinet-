@@ -9,15 +9,15 @@ var degrees = function(radians) {
 };
 
 
-var xValueElement = document.getElementById('value-x');
-var vValueElement = document.getElementById('value-speed');
-var FresValueElement = document.getElementById('value-fres');
-var FhValueElement = document.getElementById('value-fh');
-var aValueElement = document.getElementById("value-a");
-var tValueElement = document.getElementById('value-t');
-var frameId = null;
-var isRunning = false;
-var btnElement = document.getElementById("magic");
+var xValueElement = document.getElementById('value-x'),
+    vValueElement = document.getElementById('value-speed'),
+    FresValueElement = document.getElementById('value-fres'),
+    FhValueElement = document.getElementById('value-fh'),
+    aValueElement = document.getElementById("value-a"),
+    tValueElement = document.getElementById('value-t'),
+    btnElement = document.getElementById("magic"),
+    frameId = null,
+    isRunning = false;
 
 var width = canvas.getAttribute('width'),
     height = canvas.getAttribute('height'),
@@ -36,7 +36,6 @@ var Kolmnurk = function(ctx, fillStyle) {
 
   this.ctx = ctx;
   this.angle = angle;
-
 
   this.calcNurk = function() {
     if (angle<Math.atan((height-keha.h)/width)) {
@@ -138,6 +137,7 @@ var Keha = function(ctx, w, h, fillStyle) {
   };
 
   this.calcPos = function(t) {
+    this.calcA()
     this.calcSpeed(t);
     this.x = pixelsByMeter * this.Speed * t;
   };
@@ -153,15 +153,6 @@ var Keha = function(ctx, w, h, fillStyle) {
     this.ctx.rotate(-angle);
     this.ctx.translate(this.w*0.6+this.x+this.w/2,this.h/2);
     this.ctx.fillRect(-this.w/2, -this.h/2, this.w, this.h);
-    // teljetegemine??
-    /*
-    this.ctx.lineWidth = 2;
-    this.ctx.beginPath();
-    this.ctx.moveTo(0,0);
-    this.ctx.lineTo(0,100);
-    this.ctx.closePath();
-    this.ctx.stroke();
-    */
     this.ctx.restore();
   }
 };
@@ -199,6 +190,7 @@ var step = function(timeStamp) {
   keha.draw();
   tValueElement.innerHTML = parseFloat(t).toFixed(2);
   showInfo();
+  console.log(keha.Fh, keha.Fx)
   if (keha.x <= kolmnurk.a/Math.sin(angle)-keha.w*2 && isRunning) {
       frameId = window.requestAnimationFrame(step);
   } else {
