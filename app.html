@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Proovime uuesti</title>
+  <title>Kaldpind</title>
   <style>
-  canvas {
-    border: 3px solid rgb(200, 200, 200);
-  }
+    canvas {
+      border: 3px solid rgb(200, 200, 200);
+    }
   </style>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML"></script>
@@ -14,71 +14,109 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <canvas id="canvas" width="800" height="600"></canvas>
+      <div class="page-header">
+        <h1>Kaldpind</h1>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4">
-        <button style="font-weight:bold"id="magic" type="button" class="btn btn-default">ANIMEERI</button>
+      <div class="col-sm-8">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Joonis</h3>
+          </div>
+          <div class="panel-body">
+            <canvas id="canvas" width="800" height="600"></canvas>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <form>
-          <label for="g" >`g:`</label>
-          <input placeholder="Gravitatsioonilinekonstant" type="text" id="g" value="9.8">
-          <br>
-          <label for="mass">`m:`</label>
-          <input type="text" placeholder="Mass" id="mass" value="2">
-          <br>
-          <label for="my">`mu:`</label>
-          <input type="text" placeholder="Takistustegur" id="my" value="0.2">
-          <br>
-          <label for="vi">`v_0:`</label>
-          <input type="text" placeholder="Algkiirus" id="vi" value="0">
-          <br>
-          <label for="angle">`alpha:`</label>
-          <input type="text" placeholder="Nurk" id="angle" value="22">
-        </form>
-      </div>
-      <div class="col-md-4">
-        <table>
-          <tr>
-            <th>`x:`</th>
-            <td id="value-x"></td>
-          </tr>
-          <tr>
-            <th>`v:`</th>
-            <td id="value-speed"></td>
-          </tr>
-          <tr>
-            <th>`a:`</th>
-            <td id="value-a"></td>
-          </tr>
-          <tr>
-            <th>`F_(res):`</th>
-            <td id="value-fres"></td>
-          </tr>
-          <tr>
-            <th>`F_h:`</th>
-            <td id="value-fh"></td>
-          </tr>
-          <tr>
-            <th>`t:`</th>
-            <td id="value-t"></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-6">
-        <p>`F_x=m*g*sin(alpha)`</p>
-        <p>`F_n=m*g*cos(alpha)`</p>
-        <p>`F_h=mu*F_n`</p>
-        <p>`F_(res)=F_x-F_h`</p>
-        <p>`a=F_(res)/m`</p>
-        <p>`v=v_0+a*t`</p>
-        <p>`x=v*t`</p>
+      <div class="col-sm-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Seadistused</h3>
+          </div>
+          <div class="panel-body">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="g" class="col-xs-4 control-label">`g:`</label>
+                <div class="col-sm-8">
+                  <input placeholder="Gravitatsioonilinekonstant" type="text" id="g" value="9.8" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="mass" class="col-sm-4 control-label">`m:`</label>
+                <div class="col-sm-8">
+                  <input type="text" placeholder="Mass" id="mass" value="2" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="my" class="col-sm-4 control-label">`mu:`</label>
+                <div class="col-sm-8">
+                  <input type="text" placeholder="Takistustegur" id="my" value="0.2" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="vi" class="col-sm-4 control-label">`v_0:`</label>
+                <div class="col-sm-8">
+                  <input type="text" placeholder="Algkiirus" id="vi" value="0" class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="angle" class="col-sm-4 control-label">`alpha:`</label>
+                <div class="col-sm-8">
+                  <input type="text" placeholder="Nurk" id="angle" value="22" class="form-control">
+                </div>
+              </div>
+            </form>
+            <button style="font-weight:bold" id="magic" type="button" class="btn btn-info btn-lg btn-block">ANIMEERI</button>
+          </div>
+        </div>
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Väärtused reaalajas</h3>
+          </div>
+          <div class="panel-body">
+            <table>
+              <tr>
+                <th class=col-sm-4>`x:`</th>
+                <td id="value-x" class=col-sm-8></td>
+              </tr>
+              <tr>
+                <th class=col-sm-4>`v:`</th>
+                <td id="value-speed" class=col-sm-8></td>
+              </tr>
+              <tr>
+                <th class=col-sm-4>`a:`</th>
+                <td id="value-a" class=col-sm-8></td>
+              </tr>
+              <tr>
+                <th class=col-sm-4>`F_(res):`</th>
+                <td id="value-fres" class=col-sm-8></td>
+              </tr>
+              <tr>
+                <th class=col-sm-4>`F_h:`</th>
+                <td id="value-fh" class=col-sm-8></td>
+              </tr>
+              <tr>
+                <th class=col-sm-4>`t:`</th>
+                <td id="value-t" class=col-sm-8></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Valemid</h3>
+          </div>
+          <div class="panel-body">
+            <p>`F_x=m*g*sin(alpha)`</p>
+            <p>`F_n=m*g*cos(alpha)`</p>
+            <p>`F_h=mu*F_n`</p>
+            <p>`F_(res)=F_x-F_h`</p>
+            <p>`a=F_(res)/m`</p>
+            <p>`v=v_0+a*t`</p>
+            <p>`x=v_0*t + (a*t^2)/2`</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
