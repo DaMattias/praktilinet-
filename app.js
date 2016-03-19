@@ -161,11 +161,11 @@ var keha = new Keha(ctx, 80, 50);
 var kolmnurk = new Kolmnurk(ctx);
 
 var showInfo = function(ctx, block) {
-  xValueElement.innerHTML = Math.round(keha.x);
-  vValueElement.innerHTML = Math.round(keha.Speed);
-  aValueElement.innerHTML = Math.round(keha.a);
-  FresValueElement.innerHTML = Math.round(keha.FRes);
-  FhValueElement.innerHTML = Math.round(keha.Fh);
+  xValueElement.innerHTML = Math.round(keha.x*100)/100;
+  vValueElement.innerHTML = Math.round(keha.Speed*100)/100;
+  aValueElement.innerHTML = Math.round(keha.a*100)/100;
+  FresValueElement.innerHTML = Math.round(keha.FRes*100)/100;
+  FhValueElement.innerHTML = Math.round(keha.Fh*100)/100;
 };
 
 var update = function() {
