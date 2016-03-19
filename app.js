@@ -139,7 +139,7 @@ var Keha = function(ctx, w, h, fillStyle) {
   this.calcPos = function(t) {
     this.calcA()
     this.calcSpeed(t);
-    this.x = pixelsByMeter * this.Speed * t;
+    this.x = vi * t + this.A * t * t / 2;
   };
 
 
@@ -161,9 +161,9 @@ var keha = new Keha(ctx, 80, 50);
 var kolmnurk = new Kolmnurk(ctx);
 
 var showInfo = function(ctx, block) {
-  xValueElement.innerHTML = Math.round(keha.x)/pixelsByMeter;
+  xValueElement.innerHTML = Math.round(keha.x);
   vValueElement.innerHTML = Math.round(keha.Speed);
-  aValueElement.innerHTML = Math.round(keha.a)/pixelsByMeter;
+  aValueElement.innerHTML = Math.round(keha.a);
   FresValueElement.innerHTML = Math.round(keha.FRes);
   FhValueElement.innerHTML = Math.round(keha.Fh);
 };
