@@ -139,7 +139,7 @@ var Keha = function(ctx, w, h, fillStyle) {
   this.calcPos = function(t) {
     this.calcA()
     this.calcSpeed(t);
-    this.x = vi * t + this.A * t * t / 2;
+    this.x = pixelsByMeter*(vi * t + this.A * t * t / 2);
   };
 
 
@@ -161,9 +161,9 @@ var keha = new Keha(ctx, 80, 50);
 var kolmnurk = new Kolmnurk(ctx);
 
 var showInfo = function(ctx, block) {
-  xValueElement.innerHTML = Math.round(keha.x*100)/100;
+  xValueElement.innerHTML = Math.round(keha.x/pixelsByMeter*100)/100;
   vValueElement.innerHTML = Math.round(keha.Speed*100)/100;
-  aValueElement.innerHTML = Math.round(keha.a*100)/100;
+  aValueElement.innerHTML = Math.round(keha.A*100)/100;
   FresValueElement.innerHTML = Math.round(keha.FRes*100)/100;
   FhValueElement.innerHTML = Math.round(keha.Fh*100)/100;
 };
@@ -190,7 +190,6 @@ var step = function(timeStamp) {
   keha.draw();
   tValueElement.innerHTML = parseFloat(t).toFixed(2);
   showInfo();
-  console.log(keha.Fh, keha.Fx)
   if (keha.x <= kolmnurk.a/Math.sin(angle)-keha.w*2 && isRunning) {
       frameId = window.requestAnimationFrame(step);
   } else {
