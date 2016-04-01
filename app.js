@@ -178,6 +178,17 @@ var update = function() {
   angle = radians(Number(document.getElementById("angle").value))
 }
 
+var el = document.getElementById('canvas-container');
+
+var resizeCanvas = function() {
+  ctx.canvas.width = el.offsetWidth - 30;
+  ctx.canvas.height = 0.6 * el.offsetWidth;
+  ctx.scale(1, -1);
+  ctx.translate(0,-canvas.height);
+};
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas, false);
 
 var step = function(timeStamp) {
   if (!startTime) {
